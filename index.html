@@ -1,27 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>First Vue App</title>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 </head>
+
 <body>
-    <!-- Declerative Rendering (we can bind with 'v-bind' but vbind can be omitted) -->
-    <div id = "app" :title = "message">
-        {{ message + ' in ' + platform }}
+
+    <!-- Let's add Vue here -->
+    <div id = "app">
+        <h1>
+            {{header01}}
+        </h1>
+
+        <p>
+            {{message}}
+        </p>
+
+        <a :href='url'>{{linkText}}</a>
     </div>
 
     <script>
         var app = new Vue({
             el: '#app',
             data: {
-                'message': 'learning Vue!',
-                'platform': 'CodeEasy'
-
-
+                'header01': 'IzleOgrenKodla da Vue Ogreniyorum.',
+                'message': 'Bu statik veriyi nasil Vue nesnesi icerisine koyabilecegiinizi gosteren alistirma dersidir.',
+                'url':'https://vuejs.org',
+                'linkText': 'Visit Vue'
             }
         });
     </script>
 </body>
+
 </html>
