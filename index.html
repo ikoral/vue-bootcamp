@@ -7,15 +7,18 @@
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 </head>
 <body>
-    <div id = "app">
-        {{ message }}
+    <!-- Declerative Rendering (we can bind with 'v-bind' but vbind can be omitted) -->
+    <div id = "app" :title = "message">
+        {{ message + ' in ' + platform }}
     </div>
 
     <script>
         var app = new Vue({
             el: '#app',
             data: {
-                message: 'learning Vue!',
+                'message': 'learning Vue!',
+                'platform': 'CodeEasy'
+
 
             }
         });
