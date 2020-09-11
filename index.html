@@ -12,27 +12,32 @@
 
     <!-- Let's add Vue here -->
     <div id = "app">
-        <h1>
-            {{header01}}
-        </h1>
-
+       
         <p>
-            {{message}}
+            {{reversedMessage}}
         </p>
 
-        <a :href='url'>{{linkText}}</a>
     </div>
 
     <script>
         var app = new Vue({
             el: '#app',
             data: {
-                'header01': 'IzleOgrenKodla da Vue Ogreniyorum.',
-                'message': 'Bu statik veriyi nasil Vue nesnesi icerisine koyabilecegiinizi gosteren alistirma dersidir.',
-                'url':'https://vuejs.org',
-                'linkText': 'Visit Vue'
-            }
+                'message': 'Vue ogreniyorum.',
+            },
+            computed: {
+                exclamation :function(){
+                    return this.message + '!!!';
+                },
+            
+                reversedMessage :function(){
+                    return this.exclamation.split('').reverse().join('');
+                }
+            },
+
         });
+
+
     </script>
 </body>
 
