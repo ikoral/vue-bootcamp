@@ -13,8 +13,12 @@
     <!-- Let's add Vue here -->
     <div id = "app">
        
+        <input name="field" v-model="field">
         <p>
-            {{reversedMessage}}
+            {{field}}
+        </p>
+        <p>
+            {{exclamation}}
         </p>
 
     </div>
@@ -23,11 +27,11 @@
         var app = new Vue({
             el: '#app',
             data: {
-                'message': 'Vue ogreniyorum.',
+                'field': 'Vue reactive.',
             },
             computed: {
                 exclamation :function(){
-                    return this.message + '!!!';
+                    return this.field + '!';
                 },
             
                 reversedMessage :function(){
