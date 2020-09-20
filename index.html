@@ -11,21 +11,38 @@
 <body>
 
     <!-- Let's add Vue here -->
-   <div id="app">
-       <input name = "field" v-model="field"/>
-       <p>{{field}}</p>
-       <button @click="modified">click me</button>
-   </div>
+    <div id = "app">
+        <h1>Contact Form</h1>
+        <form method="POST" action="#">
+            <div>
+                <label for="name">Name</label>
+                <input type="text" name="name" id = "name" v-model = "name"/>
+            </div>
+            
+            <div>
+                <label for="email">Email</label>
+                <input type="text" name="email" id = "email" v-model = "email"/>
+            </div>
+            <div>
+                <label for="message">Message</label>
+                <textarea name="message" id = "message" v-model = "message"></textarea>
+            </div>
+        </form>
+        
+        <h1>Form Details</h1>
+        <p><strong>Name:</strong> {{name}}</p>
+        <p><strong>Email:</strong> {{email}}</p>
+        <p><strong>Message:</strong> {{message}}</p>
+    </div>
+   
+
    <script>
        const app = new Vue({
            el: "#app",
            data: {
-               field: 'Test',
-           },
-           methods: {
-               modified: function(){
-                   this.field += '!';
-               } 
+               name:'',
+               email:'',
+               message:'',
            },
        });
    </script>
