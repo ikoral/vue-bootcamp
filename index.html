@@ -11,38 +11,24 @@
 <body>
 
     <!-- Let's add Vue here -->
-    <div id = "app">
-       
-        <input name="field" v-model="field">
-        <p>
-            {{field}}
-        </p>
-        <p>
-            {{exclamation}}
-        </p>
-
-    </div>
-
-    <script>
-        var app = new Vue({
-            el: '#app',
-            data: {
-                'field': 'Vue reactive.',
-            },
-            computed: {
-                exclamation :function(){
-                    return this.field + '!';
-                },
-            
-                reversedMessage :function(){
-                    return this.exclamation.split('').reverse().join('');
-                }
-            },
-
-        });
-
-
-    </script>
+   <div id="app">
+       <input name = "field" v-model="field"/>
+       <p>{{field}}</p>
+       <button @click="modified">click me</button>
+   </div>
+   <script>
+       const app = new Vue({
+           el: "#app",
+           data: {
+               field: 'Test',
+           },
+           methods: {
+               modified: function(){
+                   this.field += '!';
+               } 
+           },
+       });
+   </script>
 </body>
 
 </html>
