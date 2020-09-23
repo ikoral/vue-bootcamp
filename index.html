@@ -5,42 +5,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>First Vue App</title>
+    <link rel="stylesheet" href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css">
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 </head>
 
-<body>
+<body class = "bg-blue-300">
 
     <!-- Let's add Vue here -->
-    <div id="app">
-        <h1>Contact Form</h1>
+    <div id="app" class = "flex flex-col justify-center h-screen w-full ml-6">
+        <div>
+            <p>{{message}}</p>          
+            <input v-model="message" name="message"/>
+            <label for="message">Pure v-model</label>
+        </div>
 
-        <p style="color:red;">{{errors.error}}</p>
+        <div class = "mt-6">
+            <p v-once>First Message: {{message}}</p>          
+            <input v-model="message" name="oncemessage"/>
+            <label for="oncemessage">Pure v-model with <b>v-once</b></label>
+        </div>
 
-        <form method="POST" action="#">
-            <div>
-                <label for="name">Name</label>
-                <input type="text" name="name" id="name" v-model="form.name" />
-                <p style="color:red;">{{nameValidation}}</p>
-            </div>
+        <div class = "mt-6">
+            <p>{{htmlText}}</p>          
+            <label for="htmlText">html text not reflected</label>
+        </div>
 
-            <div>
-                <label for="email">Email</label>
-                <input type="text" name="email" id="email" v-model="form.email" />
-                <p style="color:red;">{{emailValidation}}</p>
-            </div>
-            <div>
-                <label for="message">Message</label>
-                <textarea name="message" id="message" v-model="form.message"></textarea>
-                <p style="color:red;">{{messageValidation}}</p>
-            </div>
-
-            <button @click.prevent="validateForm">Send Form</button>
-        </form>
-
-        <h1>Form Details</h1>
-        <p><strong>Name:</strong> {{form.name}}</p>
-        <p><strong>Email:</strong> {{form.email}}</p>
-        <p><strong>Message:</strong> {{form.message}}</p>
+        <div class = "mt-6">
+            <p v-html="htmlText"></p>          
+            <label for="htmlText">html text reflected with <b>v-html</b></label>
+        </div> 
+        
     </div>
 
 
@@ -48,44 +42,8 @@
         const app = new Vue({
             el: "#app",
             data: {
-                form: {
-                    name: '',
-                    email: '',
-                    message: '',
-                    
-                },
-                errors: {
-                    error:'',
-                },
-
-            },
-            methods: {
-                validateForm: function () {
-                    
-                    if (this.form.name && this.form.email && this.form.message) {
-                        return this.errors.error = 'Form Sent';
-                    }
-
-                    return this.errors.error = 'Invalid Form';
-                },
-            },
-
-            computed:{
-                nameValidation: function() {
-                    if (! this.form.name && this.errors.error){
-                        return "name field is required."
-                    }
-                },
-                emailValidation: function(){
-                    if(! this.form.email && this.errors.error){
-                        return "email field is required."
-                    }
-                },
-                messageValidation: function(){
-                    if(! this.form.message && this.errors.error){
-                        return "message field is required."
-                    }
-                },
+                message: 'Hello Vue',
+                htmlText: '<strong>HELLO</strong>',
             }
         });
     </script>
