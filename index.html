@@ -34,7 +34,21 @@
             <p v-html="htmlText"></p>          
             <label for="htmlText">html text reflected with <b>v-html</b></label>
         </div> 
-        
+
+        <div class = "mt-6">
+            <p v-text="htmlText"></p>          
+            <label for="vueText">vue text what you write what you see <b>v-text</b></label>
+        </div>
+
+        <div class = "mt-6">
+            <p>{{ message ? 'it is true' : 'it is false'}}</p>          
+            <label for="inlineJS">it is possible to use JS between curly braces <b>some JS</b></label>
+        </div> 
+
+        <div class = "mt-6">
+            <p :title = "'title ' + message">hover your mouse over me</p>          
+            <label for="vbindUsage">we can use attribute with v-bind or shortcut only colon<b>v-bind
+ 
     </div>
 
 
