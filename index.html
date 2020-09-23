@@ -11,41 +11,60 @@
 <body>
 
     <!-- Let's add Vue here -->
-    <div id = "app">
+    <div id="app">
         <h1>Contact Form</h1>
+
+        <p style="color:red;">{{error}}</p>
+
         <form method="POST" action="#">
             <div>
                 <label for="name">Name</label>
-                <input type="text" name="name" id = "name" v-model = "name"/>
+                <input type="text" name="name" id="name" v-model="form.name" />
             </div>
-            
+
             <div>
                 <label for="email">Email</label>
-                <input type="text" name="email" id = "email" v-model = "email"/>
+                <input type="text" name="email" id="email" v-model="form.email" />
             </div>
             <div>
                 <label for="message">Message</label>
-                <textarea name="message" id = "message" v-model = "message"></textarea>
+                <textarea name="message" id="message" v-model="form.message"></textarea>
             </div>
-        </form>
-        
-        <h1>Form Details</h1>
-        <p><strong>Name:</strong> {{name}}</p>
-        <p><strong>Email:</strong> {{email}}</p>
-        <p><strong>Message:</strong> {{message}}</p>
-    </div>
-   
 
-   <script>
-       const app = new Vue({
-           el: "#app",
-           data: {
-               name:'',
-               email:'',
-               message:'',
-           },
-       });
-   </script>
+            <button @click.prevent="validateForm">Send Form</button>
+        </form>
+
+        <h1>Form Details</h1>
+        <p><strong>Name:</strong> {{form.name}}</p>
+        <p><strong>Email:</strong> {{form.email}}</p>
+        <p><strong>Message:</strong> {{form.message}}</p>
+    </div>
+
+
+    <script>
+        const app = new Vue({
+            el: "#app",
+            data: {
+                form: {
+                    name: '',
+                    email: '',
+                    message: '',
+                    
+                },
+                error: '',
+
+            },
+            methods: {
+                validateForm: function () {
+                    if (this.form.name && this.form.email && this.form.message) {
+                        return this.error = 'success';
+                    }
+
+                    return this.error = 'failed';
+                },
+            }
+        });
+    </script>
 </body>
 
 </html>
