@@ -12,43 +12,43 @@
 <body class = "bg-blue-300">
 
     <!-- Let's add Vue here -->
-    <div id="app" class = "flex flex-col justify-center h-screen w-full ml-6">
+    <div id="app" class = "flex flex-col justify-center h-screen w-full ml-6 text-sm">
+        <!-- Simple output text -->
+        <div>{{ example }}</div>
+            
+        <!-- Only Once -->
+        <div v-once>{{onlyOnce}}
+        <input v-model="onlyOnce"/>
+        </div>
+        
+        <!-- Sample HTML -->
+        <div v-html="sampleHtml" class ="ml-6">
+
+        </div>
+        
+        <!-- Output 'text' without curly braces -->
+        <div v-text="text"></div>
+        
+        <!-- If answer is true, output 'Correct!'. Otherwise, 'Wrong!' -->
         <div>
-            <p>{{message}}</p>          
-            <input v-model="message" name="message"/>
-            <label for="message">Pure v-model</label>
+            {{answer ? 'Correct!' : 'Wrong!'}}
         </div>
-
-        <div class = "mt-6">
-            <p v-once>First Message: {{message}}</p>          
-            <input v-model="message" name="oncemessage"/>
-            <label for="oncemessage">Pure v-model with <b>v-once</b></label>
+        
+        <!-- Output: 'My dog is 9 years old' -->
+        <div>
+            {{'My dog is ' + age + ' years old'}}
         </div>
-
-        <div class = "mt-6">
-            <p>{{htmlText}}</p>          
-            <label for="htmlText">html text not reflected</label>
+        
+        <!-- What is the area of this circle? (HINT: πr^2) -->
+        <!-- Where π = 3.14 -->
+        <div>
+            {{circleRadius**2*3.14}}
         </div>
-
-        <div class = "mt-6">
-            <p v-html="htmlText"></p>          
-            <label for="htmlText">html text reflected with <b>v-html</b></label>
-        </div> 
-
-        <div class = "mt-6">
-            <p v-text="htmlText"></p>          
-            <label for="vueText">vue text what you write what you see <b>v-text</b></label>
-        </div>
-
-        <div class = "mt-6">
-            <p>{{ message ? 'it is true' : 'it is false'}}</p>          
-            <label for="inlineJS">it is possible to use JS between curly braces <b>some JS</b></label>
-        </div> 
-
-        <div class = "mt-6">
-            <p :title = "'title ' + message">hover your mouse over me</p>          
-            <label for="vbindUsage">we can use attribute with v-bind or shortcut only colon<b>v-bind
- 
+        
+        <!-- Add a title attribute to show the explain text. -->
+        <!-- Add the string 'Hello! ' on the fly before the text -->
+        <div :title="'Hello! ' + explain">Hover Over Me</div>
+        
     </div>
 
 
@@ -56,8 +56,14 @@
         const app = new Vue({
             el: "#app",
             data: {
-                message: 'Hello Vue',
-                htmlText: '<strong>HELLO</strong>',
+                example: 'Learning Never Exhausts The Mind.',
+                onlyOnce: 'I will not update!',
+                sampleHtml: '<ul><li>Item 1</li><li>Item 2</li></ul>',
+                text: 'Another way to output text!',
+                answer: false,
+                age: 9,
+                circleRadius: 10,
+                explain: 'Here is some text that explains this div.'
             }
         });
     </script>
