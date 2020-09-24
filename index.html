@@ -12,6 +12,7 @@
 <body class = "bg-blue-800">
 
     <!-- Let's add Vue here -->
+<<<<<<< HEAD
     <div id="app" class = "flex flex-col justify-center items-center h-screen w-full ml-6">
 
         <div v-if='boxShow' class = 'bg-orange-500 w-20 h-20'></div>
@@ -20,6 +21,45 @@
             <div class="w-20 h-20 bg-red-700">&nbsp;</div>
             <div class="w-20 h-20 bg-yellow-700">&nbsp;</div>
         </template>
+=======
+    <div id="app" class = "flex flex-col justify-center h-screen w-full ml-6 text-sm">
+        <!-- Simple output text -->
+        <div>{{ example }}</div>
+            
+        <!-- Only Once -->
+        <div v-once>{{onlyOnce}}
+        <input v-model="onlyOnce"/>
+        </div>
+        
+        <!-- Sample HTML -->
+        <div v-html="sampleHtml" class ="ml-6">
+
+        </div>
+        
+        <!-- Output 'text' without curly braces -->
+        <div v-text="text"></div>
+        
+        <!-- If answer is true, output 'Correct!'. Otherwise, 'Wrong!' -->
+        <div>
+            {{answer ? 'Correct!' : 'Wrong!'}}
+        </div>
+        
+        <!-- Output: 'My dog is 9 years old' -->
+        <div>
+            {{'My dog is ' + age + ' years old'}}
+        </div>
+        
+        <!-- What is the area of this circle? (HINT: πr^2) -->
+        <!-- Where π = 3.14 -->
+        <div>
+            {{circleRadius**2*3.14}}
+        </div>
+        
+        <!-- Add a title attribute to show the explain text. -->
+        <!-- Add the string 'Hello! ' on the fly before the text -->
+        <div :title="'Hello! ' + explain">Hover Over Me</div>
+        
+>>>>>>> 3d1e3e6... s03 Interpolations challanges
     </div>
 
 
@@ -27,6 +67,7 @@
         const app = new Vue({
             el: "#app",
             data: {
+<<<<<<< HEAD
                 message: 'Hello Vue',
                 box: 15,
             },
@@ -34,6 +75,16 @@
                 boxShow: function(){
                     return this.box > 1
                 }
+=======
+                example: 'Learning Never Exhausts The Mind.',
+                onlyOnce: 'I will not update!',
+                sampleHtml: '<ul><li>Item 1</li><li>Item 2</li></ul>',
+                text: 'Another way to output text!',
+                answer: false,
+                age: 9,
+                circleRadius: 10,
+                explain: 'Here is some text that explains this div.'
+>>>>>>> 3d1e3e6... s03 Interpolations challanges
             }
         });
     </script>
