@@ -9,46 +9,17 @@
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 </head>
 
-<body class = "bg-blue-300">
+<body class = "bg-blue-800">
 
     <!-- Let's add Vue here -->
-    <div id="app" class = "flex flex-col justify-center h-screen w-full ml-6">
-        <div>
-            <p>{{message}}</p>          
-            <input v-model="message" name="message"/>
-            <label for="message">Pure v-model</label>
-        </div>
+    <div id="app" class = "flex flex-col justify-center items-center h-screen w-full ml-6">
 
-        <div class = "mt-6">
-            <p v-once>First Message: {{message}}</p>          
-            <input v-model="message" name="oncemessage"/>
-            <label for="oncemessage">Pure v-model with <b>v-once</b></label>
-        </div>
-
-        <div class = "mt-6">
-            <p>{{htmlText}}</p>          
-            <label for="htmlText">html text not reflected</label>
-        </div>
-
-        <div class = "mt-6">
-            <p v-html="htmlText"></p>          
-            <label for="htmlText">html text reflected with <b>v-html</b></label>
-        </div> 
-
-        <div class = "mt-6">
-            <p v-text="htmlText"></p>          
-            <label for="vueText">vue text what you write what you see <b>v-text</b></label>
-        </div>
-
-        <div class = "mt-6">
-            <p>{{ message ? 'it is true' : 'it is false'}}</p>          
-            <label for="inlineJS">it is possible to use JS between curly braces <b>some JS</b></label>
-        </div> 
-
-        <div class = "mt-6">
-            <p :title = "'title ' + message">hover your mouse over me</p>          
-            <label for="vbindUsage">we can use attribute with v-bind or shortcut only colon<b>v-bind
- 
+        <div v-if='boxShow' class = 'bg-orange-500 w-20 h-20'></div>
+        <template v-if="boxShow" >
+            <div class="w-20 h-20 bg-green-700">&nbsp;</div>
+            <div class="w-20 h-20 bg-red-700">&nbsp;</div>
+            <div class="w-20 h-20 bg-yellow-700">&nbsp;</div>
+        </template>
     </div>
 
 
@@ -57,7 +28,12 @@
             el: "#app",
             data: {
                 message: 'Hello Vue',
-                htmlText: '<strong>HELLO</strong>',
+                box: 15,
+            },
+            computed: {
+                boxShow: function(){
+                    return this.box > 1
+                }
             }
         });
     </script>
