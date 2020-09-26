@@ -1,33 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>First Vue App</title>
-    <link rel="stylesheet" href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css">
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css"
+    />
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-</head>
+  </head>
 
-<body class = "bg-blue-800">
+  <body class="bg-blue-800">
+    <div
+      id="app"
+      class="bg-blue-300 h-screen w-full flex flex-col justify-center items-center text-sm relative"
+    >
+      <p class="text-xs mb-8">0-5 = GOOD; 6-8 = WARNING; 9-10 = DANGER</p>
+      <p>Current Status: {{number}}</p>
 
-    <!-- Let's add Vue here -->
-    <div id="app" class = "flex flex-col justify-center items-center h-screen w-full">
+      <div v-if="number < 6" class="w-32 bg-green-200 text-center py-2">
+        GOOD
+      </div>
 
-        <div v-if ="modal" class="bg-green-400 absolute top-0 w-full py-2 text-center text-xl">Hey this is modal!
-            <button @click.prevent = "modal = false" class="float-right mr-4">X</button>
-        </div>
-        <button @click.prevent ="modal = ! modal" class="border border-blue-400 px-2 text-blue-400">{{modal ? "Close" : "Open"}} Modal</button>
+      <div v-else-if="number < 9" class="w-32 bg-yellow-200 text-center py-2">
+        WARNING
+      </div>
+
+      <div v-else class="w-32 bg-red-200 text-center py-2">DANGER</div>
+
+      <div class="text-xl mt-4">
+        <button @click.prevent="decrease" class="px-3 border rounded">-</button>
+        <button @click.prevent="increase" class="px-3 border rounded">+</button>
+      </div>
     </div>
 
     <script>
-        const app = new Vue({
-            el: "#app",
-            data: {
-                modal: false,
-            },
-        });
-    </script>
-</body>
+      var app = new Vue({
+        el: "#app",
+        data: {
+          number: 0,
+        },
+        methods: {
+          increase: function () {
+            if (this.number < 10) {
+              this.number += 1;
+            }
+          },
 
+          decrease: function () {
+            if (this.number > 0) {
+              this.number -= 1;
+            }
+          },
+        },
+      });
+    </script>
+  </body>
 </html>
