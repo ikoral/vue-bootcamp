@@ -12,20 +12,19 @@
 <body class = "bg-blue-800">
 
     <!-- Let's add Vue here -->
-    <div id="app" class = "flex flex-col justify-center items-center h-screen w-full ml-6">
+    <div id="app" class = "flex flex-col justify-center items-center h-screen w-full">
 
-        <div v-if="box <= 5" class="w-20 h-20 bg-green-700">&nbsp;</div>
-        <div v-else-if = "box > 10" class="w-20 h-20 bg-red-700">&nbsp;</div>
-        <div v-else class="w-20 h-20 bg-yellow-500">&nbsp;</div>
-        
+        <div v-if ="modal" class="bg-green-400 absolute top-0 w-full py-2 text-center text-xl">Hey this is modal!
+            <button @click.prevent = "modal = false" class="float-right mr-4">X</button>
+        </div>
+        <button @click.prevent ="modal = ! modal" class="border border-blue-400 px-2 text-blue-400">{{modal ? "Close" : "Open"}} Modal</button>
     </div>
 
     <script>
         const app = new Vue({
             el: "#app",
             data: {
-                message: 'Hello Vue',
-                box: 10,
+                modal: false,
             },
         });
     </script>
