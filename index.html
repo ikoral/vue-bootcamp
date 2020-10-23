@@ -9,6 +9,17 @@
       href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css"
     />
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <style>
+      .danger {
+        color:red;
+      }
+
+      .active {
+        color: green;
+      }
+
+    </style>
   </head>
 
   <body class="bg-blue-800">
@@ -16,32 +27,31 @@
       id="app"
       class="bg-blue-300 h-screen pt-12 w-full flex flex-col justify-center items-center text-md relative">
     
-      <h1 class = "uppercase font-bold mb-3">My Todo List</h1>
       
-      <div>
-        <input v-model="item"/>
-        <button @click.prevent = "addItem(item)">Add</button>
-      </div>
-      
-      <div>
-        <ul v-for = "item in items">
-          <li>{{item}}</li>
-        </ul>
-      </div>
+      <div v-bind:class = "{'danger' : 5 > 2}">v-bind:class using {'danger' : 5 > 2} notation</div>
+      <div v-bind:class = "{'active' : isActive}">v-bind:class using {} and variable</div>
+      <div :class = "{'active' : isActive}" class = "font-bold">v-bind:class using {} and variable and regular class</div>
+      <div :class = "{'active' : isActive , 'font-bold': important}">v-bind:class using {}, 2 classes inside {}</div>
+      <div :class = "myStyleCurly">v-bind:class using data object for {}</div>
+      <div :class = "styling">v-bind:class using computed property {}</div>
     </div>
 
     <script>
       var app = new Vue({
         el: "#app",
+        sayi:5,
         data: {
-          item: '',
-          items: [],
+          isActive: true,
+          important: false,
+          myStyleCurly: {'active' : false , 'font-bold': true},
+          number: 25,
         },
-        methods: {
-          addItem: function(item) {
-            this.items.push(item);
-            this.item = '';
-          },
+        computed: {
+          styling : function(){
+            return {
+              'danger': this.number > 5,
+            }
+          }
         }
       });
     </script>
