@@ -14,40 +14,35 @@
   <body class="bg-blue-800">
     <div
       id="app"
-      class="bg-blue-300 h-screen w-full flex flex-col justify-center items-center text-md relative">
+      class="bg-blue-300 h-screen pt-12 w-full flex flex-col justify-center items-center text-md relative">
     
-      <div v-for = "(i, k) in 5">Hello {{ k }}</div>
-      <div class = "my-2"></div>
-
-      <div v-for = "i in 5">Hello {{ i }}</div>
-      <div class = "my-2"></div>
+      <h1 class = "uppercase font-bold mb-3">My Todo List</h1>
       
-      <div v-for = "item in list">Hello {{ item.name }} ({{item.age}})</div>
-      <div class = "my-2"></div>
+      <div>
+        <input v-model="item"/>
+        <button @click.prevent = "addItem(item)">Add</button>
+      </div>
       
-      <select class = "px-4">
-        <option>Please Select</option>
-        <option v-for = "item in list" value = "item.age"> {{item.name}} </option>
-      </select>      
-
-      <div class = "my-2"></div>
-      <template v-for = "item in list">
-        <p class = "mt-6">{{item.name}}</p>
-        <p>{{item.age}}</p>
-        <hr class = "border w-24">
-      </template>
-
+      <div>
+        <ul v-for = "item in items">
+          <li>{{item}}</li>
+        </ul>
+      </div>
     </div>
 
     <script>
       var app = new Vue({
         el: "#app",
         data: {
-          list: [
-            {name: 'John', age: '25'},
-            {name: 'Jane', age: '20'},
-          ],
+          item: '',
+          items: [],
         },
+        methods: {
+          addItem: function(item) {
+            this.items.push(item);
+            this.item = '';
+          },
+        }
       });
     </script>
   </body>
