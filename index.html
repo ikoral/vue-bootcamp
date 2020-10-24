@@ -8,35 +8,42 @@
       rel="stylesheet"
       href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css"
     />
+    <link rel="stylesheet" href = "index.css">
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-
-  <style>
-    .red { color: red; }
-    .big { font-size: 100px; }
-    .underline { text-decoration: underline; }
-  </style>
 
   </head>
 
-  <body class="bg-blue-800">
+  <body>
     <div
       id="app"
-      class="bg-blue-300 h-screen pt-12 w-full flex flex-col justify-center items-center text-md relative">
+      class="h-screen w-full flex flex-col text-md relative">
     
-       <!-- Red Text if 5 > 1 -->
-       <div :class = "{'red' : 5>1}">Text 1</div>
-            
-       <!-- Use size for text size (inline) -->
-       <div :style = "{ fontSize: size + 'px'}">Text 2</div>
-       
-       <!-- underline and red text if toggle is true -->
-       <div :class = "['underline', toggle ? 'red font-bold' : '']">Text 3</div>
-       
-       <!-- orange text (inline) -->
-       <div :style = "{color : orange}">Text 4</div>
-       
-       <!-- red if toggle is true, otherwise big. Always underline -->
-       <div :class = "['underline', toggle ? 'red' : 'big']">Text 5</div>
+      <nav class = "nav-wrapper">
+        <div class = "logo">Vue</div>
+
+        <div class = "flex mr-6">
+          <div v-for = "item in nav" class = "mx-1">
+            <a :href = "item.link"
+                class = "link-item"
+                :class = "[item.subLinkModal ? 'link-active' : '']"
+                @click.prevent = "toggleSubModal(item)">
+                  {{item.title}}
+            </a>
+
+            <template v-if = "item.subLinks && item.subLinkModal">
+              <div class = "sublinks">
+                <a v-for = "subLink in item.subLinks":href = "subLink.link" class = "link-item">{{subLink.title}}</a>
+              </div>
+            </template>
+          </div>
+        </div>
+        
+      </nav>
+
+      
+      <div class = "body-text" >
+        Learning Vue on CodeEasy!
+      </div>
 
     </div>
 
@@ -44,9 +51,27 @@
       var app = new Vue({
         el: "#app",
         data: {
-          size: 25,
-          toggle: true,
+          nav: [
+            {title: 'Home', link: '#home'},
+            {title: 'Services', link: '#services', subLinks: [
+              {title: 'Audio', link: '#audio'},
+              {title: 'Video', link: '#video'},
+              {title: 'Web', link: '#web'}
+            ], subLinkModal: false},
+            {title: 'About', link: '#about', subLinks: [
+              {title: 'More', link: '#more'},
+              {title: 'Conduct', link: '#conduct'}
+            ], subLinkModal: false}
+          ]
         },
+
+      methods: {
+        toggleSubModal: function(item){
+          if (item.subLinks) {
+            item.subLinkModal = ! item.subLinkModal;
+          }
+        }
+      }
         
       });
     </script>
