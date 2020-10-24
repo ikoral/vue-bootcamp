@@ -10,16 +10,6 @@
     />
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 
-    <style>
-      .danger {
-        color:red;
-      }
-
-      .active {
-        color: green;
-      }
-
-    </style>
   </head>
 
   <body class="bg-blue-800">
@@ -27,21 +17,17 @@
       id="app"
       class="bg-blue-300 h-screen pt-12 w-full flex flex-col justify-center items-center text-md relative">
     
-      <div :class = "[activeClass]">class binding using array [] notation</div>
-      <div :class = "[activeClass02]">class binding using array [] notation tailwind inside</div>
-      <div :class = "[isActive ? activeClass : errorClass]">class binding ternary inside array</div>
-      <div :class = "[{active: isActive}, 'font-bold']">class binding array inside object</div>
-    
+      <div :style = "{ color: 'red'}">Inline style with object notation.</div>
+      <div :style = "{ color: 'red', fontSize : '25px'}">Inline style with object notation.</div>
+      <div :style = "mystyle">Inline style with object notation from data.</div>
+      <div :style = "[mystyle, {textDecoration: 'underline'}]">Inline style with square bracket notation</div>
     </div>
 
     <script>
       var app = new Vue({
         el: "#app",
         data: {
-          isActive: true,
-          activeClass: 'active',
-          activeClass02: 'active font-bold text-lg',
-          errorClass: 'danger',
+          mystyle : { color: 'green', fontSize : '25px'}
         },
         
       });
