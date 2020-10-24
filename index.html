@@ -24,13 +24,13 @@
       class="bg-blue-300 h-screen pt-12 w-full flex flex-col justify-center items-center text-md relative">
     
        <!-- Red Text if 5 > 1 -->
-       <div :class = "{'red' : 5>2}">Text 1</div>
+       <div :class = "{'red' : 5>1}">Text 1</div>
             
        <!-- Use size for text size (inline) -->
        <div :style = "{ fontSize: size + 'px'}">Text 2</div>
        
        <!-- underline and red text if toggle is true -->
-       <div :class = "['underline', toggle ? 'red' : '']">Text 3</div>
+       <div :class = "['underline', toggle ? 'red font-bold' : '']">Text 3</div>
        
        <!-- orange text (inline) -->
        <div :style = "{color : orange}">Text 4</div>
