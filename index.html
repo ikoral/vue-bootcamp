@@ -3,75 +3,39 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vue App | Looping Basics</title>
+    <title>Vue App | Component</title>
     <link
       rel="stylesheet"
       href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css"
     />
-    <link rel="stylesheet" href = "index.css">
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 
   </head>
 
   <body>
-    <div
-      id="app"
-      class="h-screen w-full flex flex-col text-md relative">
+    <div id="app"
+          class="h-screen w-full flex flex-col text-md relative">
     
-      <nav class = "nav-wrapper">
-        <div class = "logo">Vue</div>
-
-        <div class = "flex mr-6">
-          <div v-for = "item in nav" class = "mx-1">
-            <a :href = "item.link"
-                class = "link-item"
-                :class = "[item.subLinkModal ? 'link-active' : '']"
-                @click.prevent = "toggleSubModal(item)">
-                  {{item.title}}
-            </a>
-
-            <template v-if = "item.subLinks && item.subLinkModal">
-              <div class = "sublinks">
-                <a v-for = "subLink in item.subLinks":href = "subLink.link" class = "link-item">{{subLink.title}}</a>
-              </div>
-            </template>
-          </div>
-        </div>
-        
-      </nav>
-
+      <first-component></first-component>
       
-      <div class = "body-text" >
-        Learning Vue on CodeEasy!
-      </div>
-
     </div>
 
     <script>
+      Vue.component('first-component', {
+        template : '<div>Hello from Component and {{message}}</div>',
+
+        data: function() {
+          return {
+            message: 'Hello from Data'
+          }
+        }
+      })
+
       var app = new Vue({
         el: "#app",
         data: {
-          nav: [
-            {title: 'Home', link: '#home'},
-            {title: 'Services', link: '#services', subLinks: [
-              {title: 'Audio', link: '#audio'},
-              {title: 'Video', link: '#video'},
-              {title: 'Web', link: '#web'}
-            ], subLinkModal: false},
-            {title: 'About', link: '#about', subLinks: [
-              {title: 'More', link: '#more'},
-              {title: 'Conduct', link: '#conduct'}
-            ], subLinkModal: false}
-          ]
-        },
-
-      methods: {
-        toggleSubModal: function(item){
-          if (item.subLinks) {
-            item.subLinkModal = ! item.subLinkModal;
-          }
+          glo_message: 'Global message'
         }
-      }
         
       });
     </script>
