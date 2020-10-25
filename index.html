@@ -15,33 +15,18 @@
   <body>
     <div id = "app" class = "bg-blue-200 w-full h-screen"> 
 
-      <title-text>
-        <div>My Title</div>
-
-        <template v-slot:something>Another Text</template>
-
-        <template v-slot:newslot>
-          <div>This is new slot</div>
-        </template>
-
-      </title-text>
-
-
-      <title-text>
-        <ul>
-          <list>my list</list>
-        </ul>
-      </title-text>
+      <title-text user-id="123" :link = "{title: 'Home', link: '#home' }"></title-text>
 
     </div>
 
     <script>
 
-    Vue.component('title-text', {
-      template : '<div><h1><slot></slot></h1><slot name="something"></slot><slot name = "newslot"></slot></div>',
-    })
+      Vue.component('title-text' ,{
+        template: '<div>{{userId}} New Content {{link.title}} </div>',
 
-      const app = new Vue({
+        props: ['userId', 'link']
+      });
+     const app = new Vue({
         el: '#app',
         data: {
 
