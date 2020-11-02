@@ -1,71 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>First Vue App</title>
-    <link rel="stylesheet" href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue App | Looping Basics</title>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css"
+    />
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-</head>
+  </head>
 
-<body class = "bg-blue-800">
+  <body class="bg-blue-800">
+    <div
+      id="app"
+      class="bg-blue-300 h-screen w-full flex flex-col justify-center items-center text-md relative">
+    
+      <div v-for = "(i, k) in 5">Hello {{ k }}</div>
+      <div class = "my-2"></div>
 
-    <!-- Let's add Vue here -->
-    <div id="app" class = "flex flex-col justify-center h-screen w-full ml-6 text-sm">
-        <!-- Simple output text -->
-        <div>{{ example }}</div>
-            
-        <!-- Only Once -->
-        <div v-once>{{onlyOnce}}
-        <input v-model="onlyOnce"/>
-        </div>
-        
-        <!-- Sample HTML -->
-        <div v-html="sampleHtml" class ="ml-6">
+      <div v-for = "i in 5">Hello {{ i }}</div>
+      <div class = "my-2"></div>
+      
+      <div v-for = "item in list">Hello {{ item.name }} ({{item.age}})</div>
+      <div class = "my-2"></div>
+      
+      <select class = "px-4">
+        <option>Please Select</option>
+        <option v-for = "item in list" value = "item.age"> {{item.name}} </option>
+      </select>      
 
-        </div>
-        
-        <!-- Output 'text' without curly braces -->
-        <div v-text="text"></div>
-        
-        <!-- If answer is true, output 'Correct!'. Otherwise, 'Wrong!' -->
-        <div>
-            {{answer ? 'Correct!' : 'Wrong!'}}
-        </div>
-        
-        <!-- Output: 'My dog is 9 years old' -->
-        <div>
-            {{'My dog is ' + age + ' years old'}}
-        </div>
-        
-        <!-- What is the area of this circle? (HINT: πr^2) -->
-        <!-- Where π = 3.14 -->
-        <div>
-            {{circleRadius**2*3.14}}
-        </div>
-        
-        <!-- Add a title attribute to show the explain text. -->
-        <!-- Add the string 'Hello! ' on the fly before the text -->
-        <div :title="'Hello! ' + explain">Hover Over Me</div>
-        
+      <div class = "my-2"></div>
+      <template v-for = "item in list">
+        <p class = "mt-6">{{item.name}}</p>
+        <p>{{item.age}}</p>
+        <hr class = "border w-24">
+      </template>
+
     </div>
 
-
     <script>
-        const app = new Vue({
-            el: "#app",
-            data: {
-                example: 'Learning Never Exhausts The Mind.',
-                onlyOnce: 'I will not update!',
-                sampleHtml: '<ul><li>Item 1</li><li>Item 2</li></ul>',
-                text: 'Another way to output text!',
-                answer: false,
-                age: 9,
-                circleRadius: 10,
-                explain: 'Here is some text that explains this div.'
-            }
-        });
+      var app = new Vue({
+        el: "#app",
+        data: {
+          list: [
+            {name: 'John', age: '25'},
+            {name: 'Jane', age: '20'},
+          ],
+        },
+      });
     </script>
 </body>
 
