@@ -1,39 +1,66 @@
 <template>
-  <div>
-    <!-- <img alt="Vue logo" src="./assets/logo.png"> -->
-    <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
-    {{ message }}
+  <div class= "bg-gray-200 w-full h-screen flex flex-col items-center p-4">
+    <div>
+      <input type="text" placeholder = "Add an item"  v-model="item"/>
+      <button @click.prevent = "addItem">Add</button>
 
-    <ExampleOne />
-
-    <ExampleTwo />
+      <List :childItems = "items"></List>
+    </div>
   </div>
 </template>
 
 <script>
-//import { component } from 'vue/types/umd'
-// import HelloWorld from './components/HelloWorld.vue'
-import ExampleOne from './components/ExampleOne'
-import ExampleTwo from './components/ExampleTwo'
+
+import List from './components/List';
 
 export default {
   name: 'App',
-  // components: {
-  //   HelloWorld
-  // }
+ 
   data: function(){
     return {
-      message:'test'
+      item: '',
+      items: ['item1', 'item2']
     }
   },
 
   components: {
-      ExampleOne,
-      ExampleTwo
+    List
   },
+
+  methods: {
+    addItem: function() {
+      // this.items.push(this.item);
+      if (this.item != ''){
+        this.items.unshift(this.item);
+        this.item = ''
+      }
+      
+    }
+  }
 }
 </script>
 
 <style>
-
+input {
+    padding: 5px 15px;
+    border-radius: 15px;
+}
+button {
+    text-transform: uppercase;
+    font-size: 14px;
+    margin-left: 5px;
+    font-weight: bold;
+}
+ul {
+    margin-top: 15px;
+}
+li {
+    padding: 5px 15px;
+    margin-bottom: 5px;
+    background: white;
+    border-radius: 15px;
+    color: #555;
+    display: flex;
+    justify-content: space-between;
+}
 </style>
