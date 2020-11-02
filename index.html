@@ -12,18 +12,6 @@
 <body class = "bg-blue-800">
 
     <!-- Let's add Vue here -->
-<<<<<<< HEAD
-<<<<<<< HEAD
-    <div id="app" class = "flex flex-col justify-center items-center h-screen w-full ml-6">
-
-<<<<<<< HEAD
-        <div v-if='boxShow' class = 'bg-orange-500 w-20 h-20'></div>
-        <template v-if="boxShow" >
-            <div class="w-20 h-20 bg-green-700">&nbsp;</div>
-            <div class="w-20 h-20 bg-red-700">&nbsp;</div>
-            <div class="w-20 h-20 bg-yellow-700">&nbsp;</div>
-        </template>
-=======
     <div id="app" class = "flex flex-col justify-center h-screen w-full ml-6 text-sm">
         <!-- Simple output text -->
         <div>{{ example }}</div>
@@ -61,41 +49,13 @@
         <!-- Add the string 'Hello! ' on the fly before the text -->
         <div :title="'Hello! ' + explain">Hover Over Me</div>
         
->>>>>>> 3d1e3e6... s03 Interpolations challanges
-=======
-        <div v-if="box <= 5" class="w-20 h-20 bg-green-700">&nbsp;</div>
-        <div v-else-if = "box > 10" class="w-20 h-20 bg-red-700">&nbsp;</div>
-        <div v-else class="w-20 h-20 bg-yellow-500">&nbsp;</div>
-        
->>>>>>> 3851f38... s03 conditional renderin2
-=======
-    <div id="app" class = "flex flex-col justify-center items-center h-screen w-full">
-
-        <div v-if ="modal" class="bg-green-400 absolute top-0 w-full py-2 text-center text-xl">Hey this is modal!
-            <button @click.prevent = "modal = false" class="float-right mr-4">X</button>
-        </div>
-        <button @click.prevent ="modal = ! modal" class="border border-blue-400 px-2 text-blue-400">{{modal ? "Close" : "Open"}} Modal</button>
->>>>>>> 7bc3dc4... s03 simple modal
     </div>
+
 
     <script>
         const app = new Vue({
             el: "#app",
             data: {
-<<<<<<< HEAD
-<<<<<<< HEAD
-                message: 'Hello Vue',
-                box: 10,
-=======
-                modal: false,
->>>>>>> 7bc3dc4... s03 simple modal
-            },
-<<<<<<< HEAD
-            computed: {
-                boxShow: function(){
-                    return this.box > 1
-                }
-=======
                 example: 'Learning Never Exhausts The Mind.',
                 onlyOnce: 'I will not update!',
                 sampleHtml: '<ul><li>Item 1</li><li>Item 2</li></ul>',
@@ -104,10 +64,7 @@
                 age: 9,
                 circleRadius: 10,
                 explain: 'Here is some text that explains this div.'
->>>>>>> 3d1e3e6... s03 Interpolations challanges
             }
-=======
->>>>>>> 3851f38... s03 conditional renderin2
         });
     </script>
 </body>
