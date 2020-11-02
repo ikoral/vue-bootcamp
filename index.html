@@ -15,6 +15,7 @@
 <<<<<<< HEAD
     <div id="app" class = "flex flex-col justify-center items-center h-screen w-full ml-6">
 
+<<<<<<< HEAD
         <div v-if='boxShow' class = 'bg-orange-500 w-20 h-20'></div>
         <template v-if="boxShow" >
             <div class="w-20 h-20 bg-green-700">&nbsp;</div>
@@ -60,8 +61,13 @@
         <div :title="'Hello! ' + explain">Hover Over Me</div>
         
 >>>>>>> 3d1e3e6... s03 Interpolations challanges
+=======
+        <div v-if="box <= 5" class="w-20 h-20 bg-green-700">&nbsp;</div>
+        <div v-else-if = "box > 10" class="w-20 h-20 bg-red-700">&nbsp;</div>
+        <div v-else class="w-20 h-20 bg-yellow-500">&nbsp;</div>
+        
+>>>>>>> 3851f38... s03 conditional renderin2
     </div>
-
 
     <script>
         const app = new Vue({
@@ -69,8 +75,9 @@
             data: {
 <<<<<<< HEAD
                 message: 'Hello Vue',
-                box: 15,
+                box: 10,
             },
+<<<<<<< HEAD
             computed: {
                 boxShow: function(){
                     return this.box > 1
@@ -86,6 +93,8 @@
                 explain: 'Here is some text that explains this div.'
 >>>>>>> 3d1e3e6... s03 Interpolations challanges
             }
+=======
+>>>>>>> 3851f38... s03 conditional renderin2
         });
     </script>
 </body>
