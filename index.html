@@ -13,6 +13,7 @@
 
     <!-- Let's add Vue here -->
 <<<<<<< HEAD
+<<<<<<< HEAD
     <div id="app" class = "flex flex-col justify-center items-center h-screen w-full ml-6">
 
 <<<<<<< HEAD
@@ -67,6 +68,14 @@
         <div v-else class="w-20 h-20 bg-yellow-500">&nbsp;</div>
         
 >>>>>>> 3851f38... s03 conditional renderin2
+=======
+    <div id="app" class = "flex flex-col justify-center items-center h-screen w-full">
+
+        <div v-if ="modal" class="bg-green-400 absolute top-0 w-full py-2 text-center text-xl">Hey this is modal!
+            <button @click.prevent = "modal = false" class="float-right mr-4">X</button>
+        </div>
+        <button @click.prevent ="modal = ! modal" class="border border-blue-400 px-2 text-blue-400">{{modal ? "Close" : "Open"}} Modal</button>
+>>>>>>> 7bc3dc4... s03 simple modal
     </div>
 
     <script>
@@ -74,8 +83,12 @@
             el: "#app",
             data: {
 <<<<<<< HEAD
+<<<<<<< HEAD
                 message: 'Hello Vue',
                 box: 10,
+=======
+                modal: false,
+>>>>>>> 7bc3dc4... s03 simple modal
             },
 <<<<<<< HEAD
             computed: {
