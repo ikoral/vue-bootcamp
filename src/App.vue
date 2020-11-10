@@ -1,17 +1,23 @@
 <template>
   <div class= "bg-gray-200 w-full h-screen flex flex-col items-center p-4">
+    <div class="mb-10">
+      <Card></Card>
+    </div>
+
     <div>
       <input type="text" placeholder = "Add an item"  v-model="item"/>
       <button @click.prevent = "addItem">Add</button>
 
       <List :childItems = "items"></List>
     </div>
+
   </div>
 </template>
 
 <script>
 
 import List from './components/List';
+import Card from './components/Card';
 
 export default {
   name: 'App',
@@ -24,7 +30,8 @@ export default {
   },
 
   components: {
-    List
+    List,
+    Card
   },
 
   methods: {
