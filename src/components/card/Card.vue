@@ -1,6 +1,6 @@
 <template>
   <div class="card">
-    <div class="card-title">IT Pro Egitmen</div>
+    <div class="card-title">{{ position }}</div>
     <UserCircle :name = "name"></UserCircle>
     <div class="card-name">
       <div class="light-font">{{ splitName[0] }}</div>
@@ -20,7 +20,7 @@ export default {
     UserCircle,
   },
 
-  props: ['name', 'company'],
+  props: ['name', 'company', 'position'],
 
   computed: {
       splitName: function() {
@@ -32,7 +32,7 @@ export default {
 
 <style scoped>
 .card {
-  background: rgb(4, 84, 104);
+  background: linear-gradient(to top, #a83008, #e06e48); /*rgb(4, 84, 104);*/
   color: #dff1f5;
   padding: 15px;
   border-radius: 0 0 15px 15px;

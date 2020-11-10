@@ -18,7 +18,7 @@ export default {
 
 <style scoped>
     .card-circle {
-    background: linear-gradient(to right, #da4453, #89216b);
+    background: linear-gradient(to right, #6babc9, #335260);
     color: #fff;
     display: flex;
     justify-content: center;

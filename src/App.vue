@@ -2,9 +2,11 @@
   <div class= "bg-gray-200 w-full flex flex-col items-center p-4">
     <div class="mb-10 flex flex-row flex-wrap justify-center">
       <Card
-        :company="company"
-        :name="name"
-        v-for = "i in 10" :key="i">
+        v-for = "(person, index) in persons" :key="index"
+        :company="person.company"
+        :name="person.name"
+        :position="person.position"
+        >
       </Card>
     </div>
 
@@ -21,7 +23,7 @@
 <script>
 
 import List from './components/List';
-import Card from './components/Card';
+import Card from './components/card/Card';
 
 export default {
   name: 'App',
@@ -30,8 +32,23 @@ export default {
     return {
       item: '',
       items: ['item1', 'item2'],
-      company: 'Lecture Easy',
-      name: 'Ilhan Koral'
+      persons: [
+        {
+          company: 'Lecture Easy',
+          name: 'Ilhan Koral',
+          position: 'IT Pro Trainer'
+        },
+        {
+          company: 'Miray Bijouterie',
+          name: 'Miray Koral',
+          position: 'Sales Manager'
+        },
+        {
+          company: 'Acme Company',
+          name: 'Jane Doe',
+          position: 'Office Manager'
+        },
+      ]
     }
   },
 
