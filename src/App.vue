@@ -1,7 +1,11 @@
 <template>
-  <div class= "bg-gray-200 w-full h-screen flex flex-col items-center p-4">
-    <div class="mb-10">
-      <Card></Card>
+  <div class= "bg-gray-200 w-full flex flex-col items-center p-4">
+    <div class="mb-10 flex flex-row flex-wrap justify-center">
+      <Card
+        :company="company"
+        :name="name"
+        v-for = "i in 10" :key="i">
+      </Card>
     </div>
 
     <div>
@@ -25,7 +29,9 @@ export default {
   data: function(){
     return {
       item: '',
-      items: ['item1', 'item2']
+      items: ['item1', 'item2'],
+      company: 'Lecture Easy',
+      name: 'Ilhan Koral'
     }
   },
 
