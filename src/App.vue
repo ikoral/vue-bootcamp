@@ -17,6 +17,16 @@
       <List :childItems = "items"></List>
     </div>
 
+    <div>
+      <!-- Burda dikkat v-bind i direkt post objectine assign ediyoruz.
+      Ama Props comp nde "post yerine dogrudan "id" ve "title" keylerini props veriyoruz  -->
+      <Props 
+        :is-published = "true" 
+        :views = "123" 
+        v-bind = "post"
+        :visible = "true"/>
+    </div>
+
   </div>
 </template>
 
@@ -24,6 +34,7 @@
 
 import List from './components/List';
 import Card from './components/card/Card';
+import Props from './components/Props';
 
 export default {
   name: 'App',
@@ -48,13 +59,18 @@ export default {
           name: 'Jane Doe',
           position: 'Office Manager'
         },
-      ]
+      ],
+      post: {
+        id: 1,
+        title: 'My Title'
+      }
     }
   },
 
   components: {
     List,
-    Card
+    Card,
+    Props
   },
 
   methods: {
