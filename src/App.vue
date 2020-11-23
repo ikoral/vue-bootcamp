@@ -1,6 +1,6 @@
 <template>
   <div class= "w-full flex flex-col items-center">
-    <MyButton v-on:got-clicked="message = 'clicked'" />
+    <MyButton v-on:got-clicked="handleFormSubmitted" />
     {{ message }}
   </div>
 </template>
@@ -21,7 +21,9 @@ export default {
   },
 
   methods: {
-   
+   handleFormSubmitted: function() {
+     this.message = 'CLICKED';
+   }
   },
 };
 </script>

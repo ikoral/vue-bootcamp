@@ -1,10 +1,24 @@
 <template>
-  <button class = "button" v-on:click="$emit('got-clicked')">click me</button>
+  <button class = "button" v-on:click="handleButton" v-text = "loading ? 'Loading' : 'CLICK ME'"></button>
 </template>
 
 <script>
 export default {
+    data: function() {
+        return {
+            loading:false,
+        }
+    },
 
+    methods:{
+        handleButton: function(){
+            this.loading = true;
+
+            //AJAX REQUEST
+
+            this.$emit('got-clicked');
+        }
+    }
 }
 </script>
 
