@@ -1,66 +1,74 @@
 <template>
-  <div class= "bg-gray-200 w-full h-screen flex flex-col items-center p-4">
-    <div>
-      <input type="text" placeholder = "Add an item"  v-model="item"/>
-      <button @click.prevent = "addItem">Add</button>
+  <div class="w-full flex flex-col items-center">
+    <h1>The Cup Store</h1>
+    <product
+      v-for="product in products(product, id)"
+      key="index"
+      name="Colorful Cups"
+      :price="999"
+      :image="cups1"
+    ></product>
 
-      <List :childItems = "items"></List>
-    </div>
+    <cart></cart>
   </div>
 </template>
 
 <script>
-
-import List from './components/List';
+import Product from "./components/Product";
+import Cart from "./components/Cart";
+import Cups1 from "./assets/cups1.jpg";
+import Cups2 from "./assets/cups2.jpg";
+import Cups3 from "./assets/cups3.jpg";
 
 export default {
-  name: 'App',
- 
-  data: function(){
-    return {
-      item: '',
-      items: ['item1', 'item2']
-    }
-  },
-
+  name: "App",
   components: {
-    List
+    Product,
+    Cart,
   },
 
-  methods: {
-    addItem: function() {
-      // this.items.push(this.item);
-      if (this.item != ''){
-        this.items.unshift(this.item);
-        this.item = ''
-      }
-      
-    }
-  }
-}
+  data: () => {
+    return {
+      cups1: Cups1,
+      cups2: Cups2,
+      cups3: Cups3,
+      products: [
+        {
+          id: 120,
+          name: "Colorful Cups",
+          price: 999,
+          image: "./assets/cups1.jpg",
+        },
+        {
+          id: 121,
+          name: "Coffee & Home",
+          price: 1449,
+          image: "./assets/cups2.jpg",
+        },
+        {
+          id: 122,
+          name: "Old red Friend",
+          price: 1999,
+          image: "./assets/cups3.jpg",
+        },
+      ],
+    };
+  },
+
+  methods: {},
+};
 </script>
 
 <style>
-input {
-    padding: 5px 15px;
-    border-radius: 15px;
+body {
+  padding: 15px 0;
+  font-size: 14px;
+  background: #eeffff;
+  color: #888;
 }
-button {
-    text-transform: uppercase;
-    font-size: 14px;
-    margin-left: 5px;
-    font-weight: bold;
-}
-ul {
-    margin-top: 15px;
-}
-li {
-    padding: 5px 15px;
-    margin-bottom: 5px;
-    background: white;
-    border-radius: 15px;
-    color: #555;
-    display: flex;
-    justify-content: space-between;
+h1 {
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 15px;
 }
 </style>
